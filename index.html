@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>UnchainVoice</title>
+
+    <!-- PWA Meta Tags -->
+    <meta name="application-name" content="رمزنگار">
+    <meta name="apple-mobile-web-app-title" content="رمزنگار">
+    <meta name="description" content="ابزار رمزنگاری و استگانوگرافی فارسی پیشرفته">
+    <meta name="keywords" content="رمزنگاری, فارسی, امنیت, استگانوگرافی, آفلاین">
+    <meta name="author" content="رمزنگار فارسی">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json" crossorigin="use-credentials">
+
+    <!-- Favicon -->
+    <link rel="icon" href="icons/icon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="icons/icon.ico">
+
+    <!-- SVG Icon -->
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#1e293b" media="(prefers-color-scheme: light)">
+
+    <!-- Apple Mobile Web App Capable -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Microsoft Tiles -->
+    <meta name="msapplication-TileColor" content="#1e293b">
+    <meta name="msapplication-TileImage" content="icons/web-app-manifest-192x192.png">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="رمزنگار فارسی پیشرفته">
+    <meta property="og:description" content="ابزار رمزنگاری و استگانوگرافی فارسی پیشرفته">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com">
+    <meta property="og:image" content="icons/web-app-manifest-512x512.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="رمزنگار فارسی پیشرفته">
+    <meta name="twitter:description" content="ابزار رمزنگاری و استگانوگرافی فارسی پیشرفته">
+    <meta name="twitter:image" content="icons/web-app-manifest-512x512.png">
+
+    <!-- Preload فونت‌ها -->
+    <link rel="preload" href="./fonts/Vazir.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/Vazir.woff" as="font" type="font/woff" crossorigin>
+
+    <!-- Manifest -->
+    <link rel="manifest" href="./manifest.json" crossorigin="use-credentials">
+
+    <!-- PWA for IOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="UnchainVoice">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- PWA for microsoft -->
+    <meta name="msapplication-TileColor" content="#0f172a">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- browsers config -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="UnchainVoice">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="lib/crypto-js.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>UnchainVoice - صدای رها</h1>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-button active" data-tab="system1">رمزنگاری کلمه ای</button>
+            <button class="tab-button" data-tab="system2">رمزنگاری حروفی</button>
+        </div>
+
+        <div id="system1" class="tab-content active">
+            <section class="section">
+                <h2 class="section-title">مدیریت کلید امنیتی</h2>
+                <div class="input-group">
+                    <label for="passphrase">عبارت عبور:</label>
+                    <input type="text" id="passphrase" placeholder="یک عبارت فارسی منحصر به فرد وارد کنید...">
+                    <div class="password-strength">
+                        <div id="strength-bar" class="strength-bar"></div>
+                    </div>
+                    <p id="strength-text" style="font-size: 14px; margin-top: 8px; color: #94a3b8;"></p>
+                </div>
+                <div class="button-group">
+                    <button id="generate-key" class="primary">تولید کلید جدید</button>
+                    <button id="copy-key" disabled>کپی کلید</button>
+                    <button id="test-key" class="warning">تست سیستم</button>
+                </div>
+                <div id="key-status" class="status"></div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">رمزنگاری کلمه ای</h2>
+                <div class="input-group">
+                    <label for="plaintext">متن اصلی برای رمزنگاری:</label>
+                    <textarea id="plaintext" placeholder="متن، لینک، یا داده محرمانه خود را اینجا وارد کنید"></textarea>
+                </div>
+                <div class="button-group" style="margin-bottom: 20px;">
+                    <button id="encrypt-btn" class="primary">رمزنگاری امن</button>
+                    <button id="clear-encrypt" class="danger">پاک کردن</button>
+                </div>
+                <label>متن رمز شده:</label>
+                <div class="output-box" id="encrypted-output"></div>
+                <div class="button-group">
+                    <button id="copy-encrypted" disabled>کپی متن</button>
+                </div>
+                <div id="encrypt-status" class="status"></div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">رمزگشایی کلمه ای</h2>
+                <div class="input-group">
+                    <label for="ciphertext">متن رمز شده (کلمات فارسی):</label>
+                    <textarea id="ciphertext" placeholder="کلمات فارسی رمز شده را اینجا وارد کنید"></textarea>
+                </div>
+                <div class="button-group" style="margin-bottom: 20px;">
+                    <button id="decrypt-btn" class="primary">رمزگشایی</button>
+                    <button id="clear-decrypt" class="danger">پاک کردن</button>
+                </div>
+                <label>متن اصلی بازیابی شده:</label>
+                <div class="output-box" id="decrypted-output"></div>
+                <div class="button-group">
+                    <button id="copy-decrypted" disabled>کپی متن اصلی</button>
+                </div>
+                <div id="decrypt-status" class="status"></div>
+            </section>
+        </div>
+
+        <div id="system2" class="tab-content">
+            <div class="system2-tabs">
+                <button class="system2-tab active" data-system2-tab="encryption">رمزنگاری و Steganography</button>
+                <button class="system2-tab" data-system2-tab="decryption">رمزگشایی و استخراج</button>
+            </div>
+
+            <div id="encryption" class="system2-tab-content active">
+                <div class="system2-grid">
+                    <section class="system2-section">
+                        <h2 class="section-title">مدیریت کلید امنیتی</h2>
+                        <div class="input-group">
+                            <label for="system2-key-input">کلید فارسی (۳۲ کاراکتر):</label>
+                            <input type="text" id="system2-key-input" placeholder="کلید فارسی ۳۲ کاراکتری...">
+                            <div class="key-display" id="system2-key-display"></div>
+                        </div>
+                        <div class="button-group">
+                            <button id="system2-gen-key" class="primary">تولید کلید</button>
+                            <button id="system2-key-copy" disabled>کپی کلید</button>
+                        </div>
+                        <div id="system2-key-status" class="status"></div>
+                    </section>
+
+                    <section class="system2-section">
+                        <h2 class="section-title">رمزنگاری حروفی</h2>
+                        <div class="input-group">
+                            <label for="system2-encode-input">متن اصلی برای رمزنگاری:</label>
+                            <textarea id="system2-encode-input"
+                                placeholder="متن خود را برای رمزنگاری وارد کنید"></textarea>
+                        </div>
+                        <div class="button-group" style="margin-bottom: 20px;">
+                            <button id="system2-encode-btn" class="primary">رمزنگاری</button>
+                        </div>
+                        <label>متن رمزنگاری شده:</label>
+                        <div class="output-box" id="system2-encode-output"></div>
+                        <div class="button-group">
+                            <button id="system2-encode-copy" disabled>کپی</button>
+                        </div>
+                        <div id="system2-encode-status" class="status"></div>
+                    </section>
+                </div>
+
+                <section class="stego-section">
+                    <h2 class="section-title">پنهان‌سازی در تصویر (Steganography)</h2>
+                    <div class="input-group">
+                        <label>* این روش بسیار پیشنهاد میشود *</label>
+                        <p style="color: #cbd5e1; margin-bottom: 20px;">
+                            پس از دانلود عکس رمزنگاری شده آن را به صورت غیر فشرده (ارسال به صورت فایل) برای شخص ارسال
+                            کنید /
+                            در اپلیکیشن ایتا به هر صورتی قابل ارسال است
+                        </p>
+
+                        <div class="image-upload-area" id="stego-upload-area">
+                            <h3>تصویر PNG را برای پنهان‌سازی انتخاب کنید</h3>
+                            <p>تصویر را اینجا رها کنید یا کلیک کنید</p>
+                            <input type="file" id="stego-image-input" accept=".png" hidden>
+                        </div>
+
+                        <div class="canvas-container">
+                            <canvas id="stego-source-canvas" width="400" height="300"></canvas>
+                            <canvas id="stego-output-canvas" width="400" height="300" style="display: none;"></canvas>
+                        </div>
+
+                        <div class="button-group stego-controls">
+                            <button id="browse-stego-btn" class="primary">انتخاب تصویر</button>
+                            <button id="hide-in-image-btn" class="success" disabled>پنهان‌سازی در تصویر</button>
+                            <button id="download-stego-btn" class="warning" disabled>دانلود تصویر</button>
+                            <button id="clear-stego-btn" class="danger">پاک کردن</button>
+                        </div>
+
+                        <div id="stego-status" class="status"></div>
+
+                        <div class="feature-card">
+                            <h3>راهنمای پنهان‌سازی</h3>
+                            <p>• برای ذخیره رمزنگاری در تصویر بهتره از تصویر PNG استفاده کنید</p>
+                            <p>• تصویر خروجی بدون کاهش کیفیت ذخیره می‌شود</p>
+                            <p>• تصویر را پس از دانلود به صورت غیر فشرده در اپلیکیشن ها ارسال کنید (به صورت فایل)</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div id="decryption" class="system2-tab-content">
+                <div class="system2-grid">
+                    <section class="system2-section">
+                        <h2 class="section-title">رمزگشایی حروفی</h2>
+                        <div class="input-group">
+                            <label for="system2-decode-input">متن رمز شده فارسی:</label>
+                            <textarea id="system2-decode-input"
+                                placeholder="متن رمز شده فارسی را وارد کنید..."></textarea>
+                        </div>
+                        <div class="button-group" style="margin-bottom: 20px;">
+                            <button id="system2-decode-btn" class="primary">رمزگشایی</button>
+                        </div>
+                        <label>متن اصلی بازیابی شده:</label>
+                        <div class="output-box" id="system2-decode-output"></div>
+                        <div class="button-group">
+                            <button id="system2-decode-copy" disabled>کپی متن اصلی</button>
+                        </div>
+                        <div id="system2-decode-status" class="status"></div>
+                    </section>
+
+                    <section class="system2-section">
+                        <h2 class="section-title">استخراج از تصویر</h2>
+                        <div class="input-group">
+                            <label>آپلود تصویر حاوی اطلاعات پنهان:</label>
+                            <div class="image-upload-area" id="extract-upload-area">
+                                <h3>تصویر PNG حاوی اطلاعات را انتخاب کنید</h3>
+                                <p>تصویر را اینجا رها کنید یا کلیک کنید</p>
+                                <input type="file" id="extract-image-input" accept=".png" hidden>
+                            </div>
+
+                            <div class="canvas-container">
+                                <canvas id="extract-canvas" width="400" height="300"></canvas>
+                            </div>
+
+                            <div class="button-group" style="margin-bottom: 20px;">
+                                <button id="browse-extract-btn" class="primary">انتخاب تصویر</button>
+                                <button id="extract-from-image-btn" class="success">استخراج اطلاعات</button>
+                            </div>
+
+                            <label>اطلاعات استخراج شده:</label>
+                            <div class="output-box" id="extracted-info-output"></div>
+
+                            <div class="button-group">
+                                <button id="auto-decrypt-btn" class="warning" disabled>رمزگشایی خودکار</button>
+                                <button id="copy-extracted-btn" class="primary" disabled>کپی اطلاعات</button>
+                            </div>
+
+                            <div id="extract-status" class="status"></div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>UnchainVoice - صدای رها</p>
+            <p style="direction: ltr;">
+                (<a href="https://t.me/main_coordinate">Telegram</a> | <a href="https://x.com/MrFriauche">Twitter</a>)
+                Friauche توسعه </p>
+            <p>به امید روز های خوب ایران 🇮🇷</p>
+            <button id="install-btn" style="margin-top: 20px;" class="success">
+                📱 نصب برنامه (PWA)
+            </button>
+        </footer>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>

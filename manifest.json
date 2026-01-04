@@ -1,0 +1,50 @@
+{
+  "name": "UnchainVoice",
+  "short_name": "Unchain",
+  "description": "رمزنگاری و استگانوگرافی فارسی - صدای رها",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay"],
+  "orientation": "any",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "dir": "rtl",
+  "lang": "fa-IR",
+  "categories": ["security", "encryption", "productivity"],
+  "icons": [
+    {
+      "src": "./assets/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "رمزنگاری",
+      "short_name": "Encrypt",
+      "description": "شروع رمزنگاری پیام",
+      "url": "./#system1"
+    },
+    {
+      "name": "استگانوگرافی",
+      "short_name": "Steganography",
+      "description": "پنهان‌سازی در تصویر",
+      "url": "./#system2"
+    }
+  ],
+  "screenshots": [],
+  "features": [
+    "رمزنگاری آفلاین",
+    "پنهان‌سازی در تصویر",
+    "بدون نیاز به سرور",
+    "امنیت کامل"
+  ],
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "focus-existing"
+  }
+}
