@@ -1,6 +1,26 @@
-# رمزنگار فارسی - UnchainVoice
+<p align="center">
+  <a href="https://friauche.github.io/UnchainVoice">
+    <img src="UnchainVoice.png" width="1200" alt="رمزنگاری فارسی">
+  </a>
+</p>
 
-ابزار رمزنگاری و پنهان‌سازی اطلاعات فارسی
+<h1 align="center">رمزنگار فارسی پیشرفته</h1>
+
+<p align="center">
+  <strong>ابزار رمزنگاری و استگانوگرافی فارسی</strong>
+</p>
+
+<p align="center">
+  <a href="https://friauche.github.io/UnchainVoice">
+    <img src="https://img.shields.io/badge/🌐-Live_Demo-green?style=for-the-badge" alt="Live Demo">
+  </a>
+  <a href="https://github.com/username/farsi-encryptor">
+    <img src="https://img.shields.io/badge/📦-GitHub-black?style=for-the-badge" alt="GitHub">
+  </a>
+  <a href="https://github.com/username/farsi-encryptor/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/📜-MIT_License-yellow?style=for-the-badge" alt="License">
+  </a>
+</p>
 
 ## ✨ ویژگی‌ها
 - رمزنگاری کلمه‌ای فارسی
@@ -107,7 +127,7 @@
 ---
 
 ## 🔗 دمو
-[مشاهده دمو](https://Friauche.github.io/UnchartVoice)
+[مشاهده دمو](https://Friauche.github.io/UnchainVoice)
 
 ---
 
