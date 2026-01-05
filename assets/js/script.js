@@ -724,6 +724,7 @@ function initSystem1() {
         this.elements.copyDecrypted.disabled = true;
         this.showStatus(this.elements.decryptStatus, "متن پاک شد", "info");
       });
+      
 
       // UI update
       this.elements.plaintext.addEventListener("input", () => this.updateUI());
@@ -1039,6 +1040,7 @@ function initSystem2() {
   // consts
   const elements = {
     keyInput: document.getElementById("system2-key-input"),
+    keyInput2: document.getElementById("system2-key-input2"),
     genKeyBtn: document.getElementById("system2-gen-key"),
     keyCopyBtn: document.getElementById("system2-key-copy"),
     encodeInput: document.getElementById("system2-encode-input"),
@@ -1123,7 +1125,7 @@ function initSystem2() {
 
   const decryptData = (showMessage = true) => {
     const encryptedText = elements.decodeInput.value.trim();
-    const key = elements.keyInput.value.trim();
+    const key = elements.keyInput2.value.trim();
 
     if (!encryptedText || !key) {
       elements.decodeOutput.textContent = "";
@@ -1224,6 +1226,14 @@ function initSystem2() {
     liveDecryptTimeout = setTimeout(() => decryptData(false), 300);
     updateStegoButtonState();
   });
+  elements.keyInput2.addEventListener("input", () => {
+    updateKeyCopyState();
+    clearTimeout(liveEncryptTimeout);
+    liveEncryptTimeout = setTimeout(() => encryptData(false), 300);
+    clearTimeout(liveDecryptTimeout);
+    liveDecryptTimeout = setTimeout(() => decryptData(false), 300);
+    updateStegoButtonState();
+  });
 
   elements.encodeInput.addEventListener("input", () => {
     clearTimeout(liveEncryptTimeout);
@@ -1234,6 +1244,7 @@ function initSystem2() {
     clearTimeout(liveDecryptTimeout);
     liveDecryptTimeout = setTimeout(() => decryptData(false), 300);
   });
+ 
 
   //copy text
   elements.encodeCopyBtn.addEventListener("click", async () => {
@@ -1573,6 +1584,7 @@ function initSystem2() {
 
       elements.autoDecryptBtn.disabled = false;
       elements.copyExtractedBtn.disabled = false;
+      
 
       elements.extractedInfoOutput.innerHTML = `
                       <strong>✅ اطلاعات استخراج شد:</strong>
@@ -1610,8 +1622,7 @@ function initSystem2() {
       return;
     }
 
-    elements.keyInput.value = hiddenKey;
-    elements.keyDisplay.textContent = hiddenKey;
+    elements.keyInput2.value = hiddenKey;
     elements.decodeInput.value = hiddenText;
 
     updateKeyCopyState();
@@ -1656,7 +1667,7 @@ function initSystem2() {
   updateStegoButtonState();
   if (elements.encodeInput.value.trim() && elements.keyInput.value.trim())
     encryptData(false);
-  if (elements.decodeInput.value.trim() && elements.keyInput.value.trim())
+  if (elements.decodeInput.value.trim() && elements.keyInput2.value.trim())
     decryptData(false);
 }
 
