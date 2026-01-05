@@ -42,17 +42,17 @@
 
 | رمزنگاری کلمه ای | رمزنگاری کلمه ای |
 |-----------|-------------|
-| <img src="1.jpg" width="300"> | <img src="1.png" width="300"> |
+| <img src="screenshots/1.jpg" width="300"> | <img src="screenshots/1.png" width="300"> |
 | *حالت موبایل* | *حالت کامپیوتر* |
 
 | رمزنگاری حروفی | رمزنگاری حروفی |
 |-----------|---------|
-| <img src="2.jpg" width="300"> | <img src="2.png" width="300"> |
+| <img src="screenshots/2.jpg" width="300"> | <img src="screenshots/2.png" width="300"> |
 | *حالت موبایل* | *حالت کامپیوتر* |
 
 | استگانوگرافی | استگانوگرافی |
 |-----------|---------|
-| <img src="3.jpg" width="300"> | <img src="3.png" width="300"> |
+| <img src="screenshots/3.jpg" width="300"> | <img src="screenshots/3.png" width="300"> |
 | *حالت موبایل* | *حالت کامپیوتر* |
 
 
