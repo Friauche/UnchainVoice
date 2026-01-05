@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://friauche.github.io/UnchainVoice">
-    <img src="UnchainVoice.png" width="1200" alt="رمزنگاری فارسی">
+    <img src="screenshots/banner.png" width="1200" alt="رمزنگاری فارسی">
   </a>
 </p>
 
@@ -140,3 +140,4 @@
 <div style="text-align=center;">
 به امید روز های بهتر 🇮🇷
 </div>
+
