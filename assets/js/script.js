@@ -1901,6 +1901,14 @@ function initPWA() {
           const alertOverlay = document.getElementById("alertOverlay");
           alertOverlay.classList.add("show");
         }, 400);
+      }else{
+        document.getElementById('alertOverlay').style.display = 'none';
+        document.getElementById('mainContent').classList.add('show');
+        
+        // show animation
+        document.querySelectorAll('.content').forEach((el, index) => {
+            el.style.animationDelay = (index * 0.1) + 's';
+        });
       }
     });
   }
