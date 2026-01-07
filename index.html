@@ -77,7 +77,27 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="alert-overlay" id="alertOverlay">
+        <div class="alert-modal">
+            <button class="close-btn" onclick="closeAlert()">
+                ✕
+            </button>
+            
+            <div class="alert-icon">
+                👋
+            </div>
+            
+            <h2 class="alert-title">UnchainVoice</h2>
+            
+            <p class="alert-message">
+                برای استفاده از اپلیکیشن در اختلالات و اینترنت ملی لطفا وب اپلیکیشن را نصب کنید
+            </p>
+            <button id="install-btn" style="margin-top: 20px;" class="success">
+                📱 نصب برنامه (PWA)
+            </button>
+        </div>
+    </div>
+    <div class="container" id="mainContent">
         <header>
             <h1>UnchainVoice - صدای رها</h1>
         </header>
@@ -292,12 +312,8 @@
                 (<a href="https://t.me/main_coordinate">Telegram</a> | <a href="https://x.com/MrFriauche">Twitter</a>)
                 Friauche توسعه </p>
             <p>به امید روز های خوب ایران 🇮🇷</p>
-            <button id="install-btn" style="margin-top: 20px;" class="success">
-                📱 نصب برنامه (PWA)
-            </button>
         </footer>
     </div>
-
     <script src="assets/js/script.js"></script>
 </body>
 
