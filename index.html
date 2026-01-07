@@ -77,7 +77,30 @@
 </head>
 
 <body>
-    <div class="container">
+    <!-- main modal -->
+    <div class="alert-overlay" id="alertOverlay">
+        <div class="alert-modal">
+            <button class="close-btn none-style" onclick="closeAlert()">
+                ✕
+            </button>
+            
+            <div class="alert-icon">
+                👋
+            </div>
+            
+            <h2 class="alert-title">خوش آمدید</h2>
+            
+            <p class="alert-message">
+                برای استفاده در اختلالات و اینترنت ملی به صورت آفلاین لطفا وب اپلیکیشن را نصب کنید
+            </p>
+            
+            <button class="alert-button none-style" onclick="closeAlert()">
+                بستن
+            </button>
+        </div>
+    </div>
+    <!-- main container -->
+    <div class="container content" id="mainContent">
         <header>
             <h1>UnchainVoice - صدای رها</h1>
         </header>
