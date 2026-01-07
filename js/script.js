@@ -30,7 +30,6 @@ async function copyToClipboard(text) {
 
 // tab management func
 document.addEventListener("DOMContentLoaded", () => {
-
   // main tabs
   document.querySelectorAll(".tab-button").forEach((button) => {
     button.addEventListener("click", () => {
@@ -64,36 +63,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initSystem1();
   initSystem2();
   initPWA();
-});
-
-function closeAlert() {
-  const alertOverlay = document.getElementById("alertOverlay");
-  const modal = document.querySelector(".alert-modal");
-  const content = document.getElementById("mainContent");
-
-  // exit main modal
-  modal.style.transform = "translateY(-30px) scale(0.95)";
-  modal.style.opacity = "0";
-  alertOverlay.style.opacity = "0";
-
-  setTimeout(function () {
-    alertOverlay.style.visibility = "hidden";
-    content.classList.add("show");
-  }, 400);
-}
-
-// Close by clicking anywhere on the background
-document.getElementById("alertOverlay").addEventListener("click", function (e) {
-  if (e.target === this) {
-    closeAlert();
-  }
-});
-
-// close with ESC
-document.addEventListener("keydown", function (e) {
-  if (e.key === "Escape") {
-    closeAlert();
-  }
 });
 
 // word enc func
@@ -755,6 +724,7 @@ function initSystem1() {
         this.elements.copyDecrypted.disabled = true;
         this.showStatus(this.elements.decryptStatus, "متن پاک شد", "info");
       });
+      
 
       // UI update
       this.elements.plaintext.addEventListener("input", () => this.updateUI());
@@ -1274,6 +1244,7 @@ function initSystem2() {
     clearTimeout(liveDecryptTimeout);
     liveDecryptTimeout = setTimeout(() => decryptData(false), 300);
   });
+ 
 
   //copy text
   elements.encodeCopyBtn.addEventListener("click", async () => {
@@ -1613,6 +1584,7 @@ function initSystem2() {
 
       elements.autoDecryptBtn.disabled = false;
       elements.copyExtractedBtn.disabled = false;
+      
 
       elements.extractedInfoOutput.innerHTML = `
                       <strong>✅ اطلاعات استخراج شد:</strong>
@@ -1898,17 +1870,7 @@ function initPWA() {
           if (!isPWAInstalled) {
             createToast("می‌توانید برنامه را نصب کنید", "install", 4000);
           }
-          const alertOverlay = document.getElementById("alertOverlay");
-          alertOverlay.classList.add("show");
-        }, 400);
-      }else{
-        document.getElementById('alertOverlay').style.display = 'none';
-        document.getElementById('mainContent').classList.add('show');
-        
-        // show animation
-        document.querySelectorAll('.content').forEach((el, index) => {
-            el.style.animationDelay = (index * 0.1) + 's';
-        });
+        }, 2000);
       }
     });
   }
@@ -2129,3 +2091,4 @@ function initPWA() {
   // start pwa
   initializePWA();
 }
+
